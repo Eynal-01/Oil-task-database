@@ -11,7 +11,9 @@ namespace Oil_task_database.Presenters
 {
     public class MainPresenters
     {
-        public List<Oil> Oils = new List<Oil>()
+        private readonly IMainView _view;
+        private readonly OilContext _db;
+        public List<Oil> oils = new List<Oil>()
         {
             new Oil()
             {
@@ -34,13 +36,11 @@ namespace Oil_task_database.Presenters
                 Price=0.8
             }
         };
-        private readonly IMainView _view;
-        private readonly OilContext _db;
         public MainPresenters(IMainView view)
         {
             _view = view;
             _db = new OilContext();
-            LoadAllData();
+            AddAllOils();
             _view.SelectionOilChange += ViewSelectionOilChange;
             _view.LoadMain += ViewLoadMain;
             _view.MoneyChange += ViewMoneyChange;
@@ -68,11 +68,11 @@ namespace Oil_task_database.Presenters
                 _view.TotalPaymentText = "0.00";
             }
         }
-        private void LoadAllData()
+        private void AddAllOils()
         {
             if (_db.Oils.Any())
             {
-                _db.Oils.AddRange(Oils);
+                _db.Oils.AddRange(oils);
                 _db.SaveChanges();
             }
         }

@@ -13,7 +13,6 @@ namespace Oil_task_database.Data
         public OilContext()
        : base("OilDb")
         {
-
         }
         public DbSet<Oil> Oils { get; set; }
     }

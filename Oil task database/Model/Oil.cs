@@ -8,12 +8,12 @@ namespace Oil_task_database.Model
 {
     public class Oil
     {
-        public int OilId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
         public override string ToString()
         {
-            return $"{Name} - {Price}";
+            return $"{Name}";
         }
     }
 }
