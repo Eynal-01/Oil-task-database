@@ -36,6 +36,10 @@ namespace Oil_task_database.Presenters
                 Price=0.8
             }
         };
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="view"></param>
         public MainPresenters(IMainView view)
         {
             _view = view;
